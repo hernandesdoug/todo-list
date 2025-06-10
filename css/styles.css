@@ -10,6 +10,7 @@ html,
 body,
 .container {
   min-height: 100vh;
+  background-color: #bdf1f1;
 }
 
 .container {
@@ -29,27 +30,20 @@ body,
   position: relative;
   text-transform: uppercase;
   font-weight: bold;
-  color:black;
+  color: #000;
 }
 
 .add-itens {
   width: 200px;
   height: 600px;
   border: 1px solid black;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
-
-.lista-itens {
-  width: 200px;
-  height: 600px;
-  border: 1px solid black;
-  border-radius: 1rem;
-}
-
 
 #item {
   width: 180px;
   margin: 10px;
+  padding: 5px;
   display: flex;
   align-items: center;
 }
@@ -57,15 +51,50 @@ body,
 #btn-add {
   width: 180px;
   margin: 10px;
+  padding: 10px;
   display: flex;
   align-items: center;
+  text-align: center;
+  justify-content: center;
+  background: #d9d9d9;
+  color: #555;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0.5rem;
+}
+
+#btn-add:hover {
+  background-color: #bbb;
+}
+
+.lista-itens {
+  width: 200px;
+  height: 600px;
+  border: 1px solid black;
+  border-radius: 0.5rem;
 }
 
 .list-itens {
   list-style: none;
+  margin: 5px;
+  padding: 5px;
 }
 
 ul {
   margin: 0;
   padding: 0;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+ul li:hover {
+  background: #ddd;
 }
