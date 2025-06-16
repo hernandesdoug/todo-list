@@ -1,5 +1,14 @@
+let contador = 0;
+
 function adicionaItem() {
+    if (contador > 11) {
+        alert("Chegou ao limite da lista");
+        return;
+    }
+
     let li = document.createElement("li");
+    li.addEventListener("click", adicionaListaNova);
+
     let item = document.getElementById("item").value;
     let itemLi = document.createTextNode(item);
     li.appendChild(itemLi);
@@ -9,20 +18,20 @@ function adicionaItem() {
         document.getElementById("lista-fazer-li").appendChild(li);
     }
     document.getElementById("item").value = "";
+    contador++;
 }
 
-function adicionaListaNova() { 
-    const itemMove = document.getElementById("lista-fazer-li");
+function adicionaListaNova(evento) {
+    const el = evento.target;
     const listaFeito = document.getElementById("lista-feito-li");
-    if(itemMove && listaFeito){
-        listaFeito.appendChild(itemMove);
+
+    if(el && listaFeito){
+        listaFeito.appendChild(el);
+        contador--;
     }
 }
 
 document.addEventListener("DOMContentLoaded", function(){
     const adicionar = document.getElementById("btn-add");
     adicionar.addEventListener('click', adicionaItem);
-
-    const itemFazer = document.getElementById("lista-fazer-li");
-    itemFazer.addEventListener('click', adicionaListaNova);
 })
