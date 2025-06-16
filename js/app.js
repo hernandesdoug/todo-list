@@ -19,7 +19,6 @@ function adicionaListaNova() {
     }
 }
 
-
 document.addEventListener("DOMContentLoaded", function(){
     const adicionar = document.getElementById("btn-add");
     adicionar.addEventListener('click', adicionaItem);
