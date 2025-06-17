@@ -1,5 +1,5 @@
 let contador = 0;
-
+let contadorNovo = 0;
 function adicionaItem() {
     if (contador > 11) {
         alert("Chegou ao limite da lista");
@@ -25,9 +25,24 @@ function adicionaListaNova(evento) {
     const el = evento.target;
     const listaFeito = document.getElementById("lista-feito-li");
 
-    if(el && listaFeito){
+    listaFeito.addEventListener("click", retornaListaAntiga);
+
+    if(el && listaFeito && contadorNovo < 12){
+        contadorNovo++;
         listaFeito.appendChild(el);
         contador--;
+    }
+}
+
+function retornaListaAntiga(evento) {
+    const el = evento.target;
+    const listaAntiga = document.getElementById("lista-fazer-li");
+
+    if (el && listaAntiga){
+        console.log(contador);
+        contador++;
+        listaAntiga.appendChild(el);
+        contadorNovo--;
     }
 }
 
