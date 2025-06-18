@@ -43,7 +43,7 @@ function adicionaListaNova(evento) {
         listaFeito.appendChild(el);
         contadorNovo++;
         contador--;
-        retornaLista = false;
+        retornaLista = false; 
     }
     console.log("Incrementa lista feito: " + contadorNovo);
     console.log("Decrementa lista fazer: " + contador);
