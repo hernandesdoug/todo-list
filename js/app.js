@@ -1,6 +1,6 @@
 let contador = 0;
 let contadorNovo = 0;
-let retornaLista = false;
+
 function adicionaItem() {
     if (contador > 11) {
         alert("Chegou ao limite da lista");
@@ -13,56 +13,42 @@ function adicionaItem() {
     let item = document.getElementById("item").value;
     let itemLi = document.createTextNode(item);
     li.appendChild(itemLi);
-    if(item === ''){
+
+    if (item === '') {
         alert("Você precisa digitar algo para adicionar!");
-    }else{
-        document.getElementById("lista-fazer-li").appendChild(li);
-        retornaLista = true;
+    } else {
+        document.getElementById("lista-fazer").appendChild(li);
         contador++;
     }
+
     document.getElementById("item").value = "";
-    console.log("Incrementa lista fazer: " + contador);
 }
 
 function adicionaListaNova(evento) {
     const el = evento.target;
-    const listaFeito = document.getElementById("lista-feito-li");
-
+    const listaFeito = document.getElementById("lista-feito");
+    
     if (contadorNovo > 11) {
         alert("Chegou ao limite da lista nova!");
         return;
     }
-
-    console.log(retornaLista)
-    if(!retornaLista){
-        console.log("entrou para retornar")
-        listaFeito.addEventListener("click", retornaListaAntiga);
-    }
-
-    if(el && listaFeito && retornaLista){
-        listaFeito.appendChild(el);
-        contadorNovo++;
-        contador--;
-        retornaLista = false; 
-    }
-    console.log("Incrementa lista feito: " + contadorNovo);
-    console.log("Decrementa lista fazer: " + contador);
+    
+    el.removeEventListener("click", adicionaListaNova);
+    el.addEventListener("click", retornaListaAntiga);
+    listaFeito.appendChild(el);
+    contadorNovo++;
+    contador--;
 }
 
 function retornaListaAntiga(evento) {
     const el = evento.target;
-    const listaAntiga = document.getElementById("lista-fazer-li");
-    
-    console.log("Contador antes de retornar " + contador);
+    const listaAntiga = document.getElementById("lista-fazer");
 
-    if (el && listaAntiga){
-        listaAntiga.appendChild(el);
-        contadorNovo--;
-    }
-    retornaLista = true;
-    contador++; 
-    console.log("Decrementa lista nova ao retornar: " + contadorNovo);
-    console.log("Incrementa lista fazer ao retornar: " + contador )
+    el.removeEventListener("click", retornaListaAntiga);
+    el.addEventListener("click", adicionaListaNova);
+    listaAntiga.appendChild(el);
+    contadorNovo--;
+    contador++;
 }
 
 document.addEventListener("DOMContentLoaded", function(){
